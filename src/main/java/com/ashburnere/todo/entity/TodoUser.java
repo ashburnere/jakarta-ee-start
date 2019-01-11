@@ -4,14 +4,17 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 import javax.persistence.Entity;
+import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 
-@SuppressWarnings("unused")
 @Entity
+@NamedQuery(name = TodoUser.GET_ALL_USERS, query = "select user from TodoUser user order by user.name")
 public class TodoUser extends AbstractEntity {
 
 	private String name;
 	private String email;
+
+	public static final String GET_ALL_USERS = "TodoUser.getAllUsers";
 
 	@OneToMany
 	private Collection<Todo> todoCollection = new ArrayList<>();
