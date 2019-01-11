@@ -1,6 +1,7 @@
 package com.ashburnere.todo.control;
 
 import javax.enterprise.context.RequestScoped;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
@@ -15,6 +16,9 @@ public class PersistenceService {
 	@PersistenceContext
 	EntityManager em;
 
+	@Inject
+	QueryService queryService;
+
 	public TodoUser saveTodoUser(TodoUser user) {
 		em.persist(user);
 
@@ -27,8 +31,14 @@ public class PersistenceService {
 		return user;
 	}
 
-	public Todo saveTodo(Todo todo) {
-		em.persist(todo);
+	public Todo saveTodo(Todo todo, long userId) {
+		TodoUser user = queryService.findTodoUser(userId);
+
+		// link todo to todoUser
+		if (user != null) {
+			todo.setTodoUser(user);
+			em.persist(todo);
+		}
 
 		return todo;
 	}
