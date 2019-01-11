@@ -4,22 +4,13 @@ import java.time.LocalDate;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
 @Entity
 @Table(name = "MY_TODO_TABLE")
-public class Todo {
-
-	// primary key, auto generation strategy to let the persistence provider decide
-	// which to use
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+public class Todo extends AbstractEntity {
 
 	@Column(name = "todo_task")
 	private String task;
@@ -34,14 +25,6 @@ public class Todo {
 	// non persistent field, ignored by JPA
 	@Transient
 	private String myTransientProperty;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
 
 	public String getTask() {
 		return task;
