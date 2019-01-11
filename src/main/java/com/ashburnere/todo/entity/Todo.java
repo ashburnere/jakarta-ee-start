@@ -2,12 +2,16 @@ package com.ashburnere.todo.entity;
 
 import java.time.LocalDate;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Table;
+import javax.persistence.Transient;
 
 @Entity
+@Table(name = "MY_TODO_TABLE")
 public class Todo {
 
 	// primary key, auto generation strategy to let the persistence provider decide
@@ -16,11 +20,16 @@ public class Todo {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 
+	@Column(name = "todo_task")
 	private String task;
 	private LocalDate dueDate;
 	private LocalDate dateCreated;
 	private boolean completed;
 	private boolean archived;
+
+	// non persistent field, ignored by JPA
+	@Transient
+	private String myTransientProperty;
 
 	public Long getId() {
 		return id;
@@ -68,5 +77,13 @@ public class Todo {
 
 	public void setArchived(boolean archived) {
 		this.archived = archived;
+	}
+
+	public String getMyTransientProperty() {
+		return myTransientProperty;
+	}
+
+	public void setMyTransientProperty(String myTransientProperty) {
+		this.myTransientProperty = myTransientProperty;
 	}
 }
