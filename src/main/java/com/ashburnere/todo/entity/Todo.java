@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
@@ -26,6 +27,9 @@ public class Todo {
 	private LocalDate dateCreated;
 	private boolean completed;
 	private boolean archived;
+
+	@ManyToOne
+	private TodoUser todoUser; // unidirectional relationship from Todo to user
 
 	// non persistent field, ignored by JPA
 	@Transient
@@ -77,6 +81,14 @@ public class Todo {
 
 	public void setArchived(boolean archived) {
 		this.archived = archived;
+	}
+
+	public TodoUser getTodoUser() {
+		return todoUser;
+	}
+
+	public void setTodoUser(TodoUser todoUser) {
+		this.todoUser = todoUser;
 	}
 
 	public String getMyTransientProperty() {
