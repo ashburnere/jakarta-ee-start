@@ -26,4 +26,12 @@ public class QueryService {
 		// query all TodoUser objects using name query from TodoUser class
 		return em.createNamedQuery(TodoUser.GET_ALL_USERS, TodoUser.class).getResultList();
 	}
+
+	public Todo findTodo(long id) {
+		return em.find(Todo.class, id);
+	}
+
+	public TodoUser findTodoUser(long id) {
+		return em.find(TodoUser.class, id);
+	}
 }
