@@ -1,5 +1,5 @@
 
-#jakarta-ee-start
+# jakarta-ee-start
 
 Example project which uses the java ee APIs CDI, JAXRS and JPA from the course: succinct-jakarta-ee-for-java-developers
 
