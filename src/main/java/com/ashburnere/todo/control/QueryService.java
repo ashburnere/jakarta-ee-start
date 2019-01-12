@@ -22,6 +22,18 @@ public class QueryService {
 		return em.createQuery("select todo from Todo todo order by todo.dueDate", Todo.class).getResultList();
 	}
 
+	public List<Todo> getAllTodos(Long id) {
+		List<Todo> todoList;
+		TodoUser todoUser = findTodoUser(id);
+		if (todoUser != null) {
+			todoList = em.createQuery("select todo from Todo  todo where todo.todoUser = :user ", Todo.class)
+					.setParameter("user", todoUser).getResultList();
+			return todoList;
+		}
+
+		return null;
+	}
+
 	public List<TodoUser> getAllTodoUsers() {
 		// query all TodoUser objects using name query from TodoUser class
 		return em.createNamedQuery(TodoUser.GET_ALL_USERS, TodoUser.class).getResultList();
@@ -31,7 +43,7 @@ public class QueryService {
 		return em.find(Todo.class, id);
 	}
 
-	public TodoUser findTodoUser(long id) {
+	public TodoUser findTodoUser(Long id) {
 		return em.find(TodoUser.class, id);
 	}
 }

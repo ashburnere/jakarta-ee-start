@@ -31,7 +31,7 @@ public class PersistenceService {
 		return user;
 	}
 
-	public Todo saveTodo(Todo todo, long userId) {
+	public Todo saveTodo(Todo todo, Long userId) {
 		TodoUser user = queryService.findTodoUser(userId);
 
 		// link todo to todoUser
