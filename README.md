@@ -1,7 +1,9 @@
 
 # jakarta-ee-start
 
-Example project which uses the java ee APIs CDI, JAXRS and JPA from the course: succinct-jakarta-ee-for-java-developers
+Example project which uses the Java EE APIs CDI, JAXRS and JPA from the Succinct Jakarta EE for the New Java Developer Course: 
+https://www.pedanticacademy.com/course?courseid=succinct-jakarta-ee-for-java-developers-course
+
 
 Following rest endpoints are available: 
 
