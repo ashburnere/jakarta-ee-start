@@ -13,6 +13,8 @@ Following rest endpoints are available:
 - POST	/jakarta-ee-start/resources/todo/new
 - GET	/jakarta-ee-start/resources/todo/time
 
+[![Build Status](https://travis-ci.com/ashburnere/jakarta-ee-start.svg?branch=master)](https://travis-ci.com/ashburnere/jakarta-ee-start)
+
 
 
 
